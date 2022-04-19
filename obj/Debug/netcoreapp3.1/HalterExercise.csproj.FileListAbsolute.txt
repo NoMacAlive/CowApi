@@ -1,0 +1,9 @@
+C:\Users\zhugu\source\repos\HalterExercise\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\zhugu\source\repos\HalterExercise\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\zhugu\source\repos\HalterExercise\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\zhugu\source\repos\HalterExercise\obj\Debug\netcoreapp3.1\HalterExercise.csprojAssemblyReference.cache
+C:\Users\zhugu\source\repos\HalterExercise\obj\Debug\netcoreapp3.1\staticwebassets\HalterExercise.StaticWebAssets.Manifest.cache
+C:\Users\zhugu\source\repos\HalterExercise\obj\Debug\netcoreapp3.1\staticwebassets\HalterExercise.StaticWebAssets.xml
+C:\Users\zhugu\source\repos\HalterExercise\obj\Debug\netcoreapp3.1\HalterExercise.AssemblyInfoInputs.cache
+C:\Users\zhugu\source\repos\HalterExercise\obj\Debug\netcoreapp3.1\HalterExercise.AssemblyInfo.cs
+C:\Users\zhugu\source\repos\HalterExercise\obj\Debug\netcoreapp3.1\HalterExercise.RazorTargetAssemblyInfo.cache
