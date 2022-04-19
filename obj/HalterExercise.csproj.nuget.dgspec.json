@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zhugu\\source\\repos\\HalterExercise\\HalterExercise.csproj": {}
+    "C:\\Users\\Guangya.Zhu\\RiderProjects\\CowApi\\HalterExercise.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zhugu\\source\\repos\\HalterExercise\\HalterExercise.csproj": {
+    "C:\\Users\\Guangya.Zhu\\RiderProjects\\CowApi\\HalterExercise.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zhugu\\source\\repos\\HalterExercise\\HalterExercise.csproj",
+        "projectUniqueName": "C:\\Users\\Guangya.Zhu\\RiderProjects\\CowApi\\HalterExercise.csproj",
         "projectName": "HalterExercise",
-        "projectPath": "C:\\Users\\zhugu\\source\\repos\\HalterExercise\\HalterExercise.csproj",
-        "packagesPath": "C:\\Users\\zhugu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zhugu\\source\\repos\\HalterExercise\\obj\\",
+        "projectPath": "C:\\Users\\Guangya.Zhu\\RiderProjects\\CowApi\\HalterExercise.csproj",
+        "packagesPath": "C:\\Users\\Guangya.Zhu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Guangya.Zhu\\RiderProjects\\CowApi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\zhugu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Guangya.Zhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +29,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,12 +41,17 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.9.10, )"
             },
             "Refit": {
+              "target": "Package",
+              "version": "[6.3.2, )"
+            },
+            "Refit.HttpClientFactory": {
               "target": "Package",
               "version": "[6.3.2, )"
             }
@@ -57,7 +66,15 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.212\\RuntimeIdentifierGraph.json"
         }
       }
     }

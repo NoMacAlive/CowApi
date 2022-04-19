@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Refit;
 
 namespace HalterExercise.Controllers
 {
-    interface ICowAPI
+    public interface ICowAPI
     {
-        [Get("/users/{user}")]
-        Task<List<Cow>> GetCows(string cowId);
+        [Get("/{collarId}/status")]
+        Task<List<CollarStatus>> GetCows(string collarId);
     }
 }

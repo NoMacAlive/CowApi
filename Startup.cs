@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HalterExercise.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Refit;
 
 namespace HalterExercise
 {
@@ -26,6 +28,9 @@ namespace HalterExercise
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services
+                .AddRefitClient<ICowAPI>()
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration["HalterCowApiAddress"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
