@@ -15,7 +15,7 @@ namespace HalterExercise.Repositories
 
 		public Cow GetById( Guid id )
 		{
-			return _dbContext.Cows.First( x => x.Id == id );
+			return _dbContext.Cows.FirstOrDefault( x => x.Id == id );
 		}
 
 		public bool Create( Cow newObject )
@@ -40,7 +40,7 @@ namespace HalterExercise.Repositories
 
 		public Cow GetByNumber( int cowNumber )
 		{
-			return _dbContext.Cows.First( x => x.CowNumber == cowNumber );
+			return _dbContext.Cows.FirstOrDefault( x => x.CowNumber == cowNumber );
 		}
 	}
 }

@@ -7,7 +7,7 @@ namespace HalterExercise
 	{
 		public DbSet<Cow> Cows { get; set; }
 
-		public DbSet<Collar> Collars { get; set; }
+		// public DbSet<Collar> Collars { get; set; }
 		
 		public HalterContext (DbContextOptions<HalterContext> options)
 			: base(options)
@@ -17,8 +17,8 @@ namespace HalterExercise
 		#region Required
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Cow>( )
-				.OwnsOne( p => p.LastLocation );
+			// modelBuilder.Entity<Cow>( )
+			// 	.OwnsOne( p => p.LastLocation );
 		}
 		#endregion
 	}
