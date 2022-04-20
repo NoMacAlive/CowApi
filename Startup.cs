@@ -1,5 +1,6 @@
 using System;
 using HalterExercise.Controllers;
+using HalterExercise.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,10 @@ namespace HalterExercise
                 .AddRefitClient<ICowAPI>()
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration["HalterCowApiAddress"]));
             services.AddDbContext<HalterContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("HalterContext")));
+                options.UseNpgsql(Configuration.GetConnectionString("HalterContext")), x => x.MigrationsAssembly("Migrations"));
+
+            services.AddScoped<ICowRepository, CowRepository>( );
+            services.AddScoped<ICollarRepository, CollarRepository>( );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

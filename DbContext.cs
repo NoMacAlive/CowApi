@@ -8,15 +8,18 @@ namespace HalterExercise
 		public DbSet<Cow> Cows { get; set; }
 
 		public DbSet<Collar> Collars { get; set; }
-
-		// public HalterContext( string connection ) : base( new DbContextOptionsBuilder( ).UseNpgsql( connection ).Options )
-		// {
-		// }
-		protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
-			=> optionsBuilder.UseNpgsql( "Host=localhost:5432;Database=my_db;Username=postgres;Password=changeme" );
+		
 		public HalterContext (DbContextOptions<HalterContext> options)
 			: base(options)
 		{
 		}
+		
+		#region Required
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Cow>( )
+				.OwnsOne( p => p.LastLocation );
+		}
+		#endregion
 	}
 }
