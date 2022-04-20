@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "cow",
+      "launchUrl": "cows",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "HalterExercise": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "cow",
+      "launchUrl": "cows",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

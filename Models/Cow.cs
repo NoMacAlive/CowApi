@@ -12,8 +12,6 @@ namespace HalterExercise.Models
         public int CollarId { get; set; }
         public int CowNumber { get; set; }
 
-        public CollarStatus CollarStatus { get; set; }
-
         public Location LastLocation { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using HalterExercise.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace HalterExercise.Controllers
@@ -13,13 +14,15 @@ namespace HalterExercise.Controllers
 	public class CowsController : ControllerBase
 	{
 		private readonly ICowAPI _cowApi;
+		private readonly HalterContext _dbContext;
 		private readonly ILogger<CowsController> _logger;
 		private List<Cow> cows = new List<Cow>( );
 
-		public CowsController( ICowAPI cowApi,
+		public CowsController( ICowAPI cowApi, HalterContext dbContext,
 			ILogger<CowsController> logger )
 		{
 			_cowApi = cowApi;
+			_dbContext = dbContext;
 			_logger = logger;
 		}
 
