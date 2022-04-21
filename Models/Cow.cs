@@ -13,9 +13,9 @@ namespace HalterExercise.Models
         public int CollarId { get; set; }
         [Column("cownumber")]
         public int CowNumber { get; set; }
-        [Column("latitude")]
+        [NotMapped]
         public int Latitude { get; set; }
-        [Column("longitude")]
+        [NotMapped]
         public int Longitude { get; set; }
     }
 }

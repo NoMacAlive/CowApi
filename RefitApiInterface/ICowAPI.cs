@@ -10,6 +10,6 @@ namespace HalterExercise.Controllers
     public interface ICowAPI
     {
         [Get("/{collarId}/status")]
-        Task<List<CollarStatus>> GetCows(string collarId);
+        Task<List<CollarStatus>> GetCollarStatusList(string collarId);
     }
 }

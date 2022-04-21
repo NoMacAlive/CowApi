@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HalterExercise.Models;
 using HalterExercise.Models.RequestModels;
 using HalterExercise.Repositories;
+using HalterExercise.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -15,28 +16,40 @@ namespace HalterExercise.Controllers
 	[Route( "[controller]" )]
 	public class CowsController : ControllerBase
 	{
-		private readonly ICowAPI _cowApi;
 		private readonly ICowRepository _cowRepository;
+		private readonly ICollarStatusService _collarStatusService;
 		private readonly ILogger<CowsController> _logger;
 
-		public CowsController( ICowAPI cowApi,ICowRepository cowRepository,
-			ILogger<CowsController> logger )
+		public CowsController( ICowRepository cowRepository, ICollarStatusService collarStatusService ,ILogger<CowsController> logger )
 		{
-			_cowApi = cowApi;
 			_cowRepository = cowRepository;
+			_collarStatusService = collarStatusService;
 			_logger = logger;
 		}
 
 		[HttpGet("{id}")]
 		public async Task<Cow> Get( Guid id )
 		{
-			return await _cowRepository.GetById( id );
+			Cow cow = await _cowRepository.GetById( id );
+			CollarStatus collarStatus = await _collarStatusService.GetLatestCollarStatus( cow.CollarId );
+			cow.Latitude = (int)Math.Round(Decimal.Parse(collarStatus.Lat));
+			cow.Longitude = (int)Math.Round(Decimal.Parse(collarStatus.Lng));
+
+			return cow;
 		}
 		
 		[HttpGet]
 		public async Task<IList<Cow>> Get( )
 		{
-			return await _cowRepository.GetAllCows( );
+			IList<Cow> cows = await _cowRepository.GetAllCows( );
+			foreach ( var cow in cows )
+			{
+				CollarStatus collarStatus = await _collarStatusService.GetLatestCollarStatus( cow.CollarId );
+				cow.Latitude = (int)Math.Round(Decimal.Parse(collarStatus.Lat));
+				cow.Longitude = (int)Math.Round(Decimal.Parse(collarStatus.Lng));
+			}
+
+			return cows;
 		}
 		
 		[HttpPost]
@@ -51,7 +64,7 @@ namespace HalterExercise.Controllers
 			return Ok( );
 		}
 		
-		[HttpPut("/{id}")]
+		[HttpPut("{id}")]
 		public async Task<ActionResult> Put( UpdateCowRequest request, Guid id)
 		{
 			Cow cowToUpdate = await _cowRepository.GetById( id );

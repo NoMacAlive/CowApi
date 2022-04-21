@@ -1,6 +1,7 @@
 using System;
 using HalterExercise.Controllers;
 using HalterExercise.Repositories;
+using HalterExercise.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -33,6 +34,7 @@ namespace HalterExercise
 
             services.AddScoped<ICowRepository, CowRepository>( );
             services.AddScoped<ICollarRepository, CollarRepository>( );
+            services.AddScoped<ICollarStatusService, CollarStatusService>( );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
