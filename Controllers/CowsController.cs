@@ -31,11 +31,11 @@ namespace HalterExercise.Controllers
 		[HttpGet]
 		public async Task<Cow> Get( Guid id )
 		{
-			return _cowRepository.GetById( id );
+			return await _cowRepository.GetById( id );
 		}
 		
 		[HttpGet]
-		public async Task<List<Cow>> Get( )
+		public async Task<IList<Cow>> Get( )
 		{
 			return await _cowRepository.GetAllCows( );
 		}
@@ -53,9 +53,9 @@ namespace HalterExercise.Controllers
 		}
 		
 		[HttpPut("/{id}")]
-		public ActionResult Put( UpdateCowRequest request, Guid id)
+		public async Task<ActionResult> Put( UpdateCowRequest request, Guid id)
 		{
-			Cow cowToUpdate = _cowRepository.GetById( id );
+			Cow cowToUpdate = await _cowRepository.GetById( id );
 			cowToUpdate.CollarId = request.CollarId;
 			cowToUpdate.CowNumber = request.CowNumber;
 			

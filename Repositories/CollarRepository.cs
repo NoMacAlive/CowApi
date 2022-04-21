@@ -1,15 +1,16 @@
+using System.Threading.Tasks;
 using HalterExercise.Models;
 
 namespace HalterExercise.Repositories
 {
 	public class CollarRepository : ICollarRepository
 	{
-		public bool Create( Collar newObject )
+		public async Task<bool> Create( Collar newObject )
 		{
 			throw new System.NotImplementedException( );
 		}
 
-		public bool Update( Collar updatedObject )
+		public async Task<bool> Update( Collar updatedObject )
 		{
 			throw new System.NotImplementedException( );
 		}
