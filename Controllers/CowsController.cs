@@ -27,7 +27,7 @@ namespace HalterExercise.Controllers
 			_logger = logger;
 		}
 
-		[HttpGet]
+		[HttpGet("{id}")]
 		public async Task<Cow> Get( Guid id )
 		{
 			return await _cowRepository.GetById( id );
