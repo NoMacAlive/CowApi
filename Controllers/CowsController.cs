@@ -79,8 +79,8 @@ namespace HalterExercise.Controllers
 		{
 			_cowRepository.Create( new Cow( )
 			{
-				CollarId = request.CollarId,
-				CowNumber = request.CowNumber
+				CollarId = Int32.Parse( request.CollarId ),
+				CowNumber = Int32.Parse( request.CowNumber )
 			} );
 
 			return Ok( );

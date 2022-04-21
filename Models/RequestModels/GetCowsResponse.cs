@@ -13,5 +13,7 @@ namespace HalterExercise.Models.RequestModels
 		public int CowNumber { get; set; }
 		[JsonPropertyName("lastLocation")]
 		public Location LastLocation { get; set; }
+		[JsonPropertyName("collarStatus")]
+		public Enums.CollarStatus CollarStatus { get; set; }
 	}
 }

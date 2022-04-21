@@ -1,10 +1,14 @@
 
+using System.Text.Json.Serialization;
+
 namespace HalterExercise.Models.RequestModels
 {
 	public class CreateNewCowRequest
 	{
-		public int CollarId { get; set; }
+		[JsonPropertyName("collarId")]
+		public string CollarId { get; set; }
 
-		public int CowNumber { get; set; }
+		[JsonPropertyName("cowNumber")]
+		public string CowNumber { get; set; }
 	}
 }
