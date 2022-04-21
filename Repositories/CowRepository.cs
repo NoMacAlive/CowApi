@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using HalterExercise.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HalterExercise.Repositories
 {
@@ -13,34 +16,39 @@ namespace HalterExercise.Repositories
 			_dbContext = dbContext;
 		}
 
-		public Cow GetById( Guid id )
+		public async Task<Cow> GetById( Guid id )
 		{
-			return _dbContext.Cows.FirstOrDefault( x => x.Id == id );
+			return await _dbContext.Cows.FirstOrDefaultAsync( x => x.Id == id );
 		}
 
-		public bool Create( Cow newObject )
+		public async Task<bool> Create( Cow newObject )
 		{
 			_dbContext.Cows.Add( newObject );
-			_dbContext.SaveChanges( );
+			await _dbContext.SaveChangesAsync( );
 			return true;
 		}
 
-		public bool Update( Cow updatedObject )
+		public async Task<bool> Update( Cow updatedObject )
 		{
 			_dbContext.Cows.Update( updatedObject );
-			_dbContext.SaveChanges( );
+			await _dbContext.SaveChangesAsync( );
 			return true;
 		}
 
-		public bool DeleteById( Guid id )
+		public async Task<bool> DeleteById( Guid id )
 		{
-			_dbContext.Cows.Remove( GetById( id ) );
+			_dbContext.Cows.Remove( await GetById( id ) );
 			return true;
 		}
 
-		public Cow GetByNumber( int cowNumber )
+		public async Task<IList<Cow>> GetAllCows( )
 		{
-			return _dbContext.Cows.FirstOrDefault( x => x.CowNumber == cowNumber );
+			return await _dbContext.Cows.ToListAsync( );
+		}
+
+		public async Task<Cow> GetByNumber( int cowNumber )
+		{
+			return await _dbContext.Cows.FirstOrDefaultAsync( x => x.CowNumber == cowNumber );
 		}
 	}
 }

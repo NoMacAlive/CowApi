@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HalterExercise.Models;
+using HalterExercise.Models.RequestModels;
 using HalterExercise.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,22 +29,38 @@ namespace HalterExercise.Controllers
 		}
 
 		[HttpGet]
-		public async Task<Cow> Get( )
+		public async Task<Cow> Get( Guid id )
 		{
-			return _cowRepository.GetById( Guid.Empty );
-			// return await _cowApi.GetCows( "2" );
+			return _cowRepository.GetById( id );
+		}
+		
+		[HttpGet]
+		public async Task<List<Cow>> Get( )
+		{
+			return await _cowRepository.GetAllCows( );
 		}
 		
 		[HttpPost]
-		public void Post( )
+		public ActionResult Post( CreateNewCowRequest request )
 		{
-			_cowRepository.Create( new Cow( ){CowNumber = 12} );
+			_cowRepository.Create( new Cow( )
+			{
+				CollarId = request.CollarId,
+				CowNumber = request.CowNumber
+			} );
+
+			return Ok( );
 		}
 		
-		[HttpPut]
-		public async Task<List<CollarStatus>> Put( )
+		[HttpPut("/{id}")]
+		public ActionResult Put( UpdateCowRequest request, Guid id)
 		{
-			return await _cowApi.GetCows( "2" );
+			Cow cowToUpdate = _cowRepository.GetById( id );
+			cowToUpdate.CollarId = request.CollarId;
+			cowToUpdate.CowNumber = request.CowNumber;
+			
+			_cowRepository.Update( cowToUpdate );
+			return Ok( );
 		}
 	}
 }
