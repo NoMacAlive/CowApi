@@ -8,10 +8,11 @@ namespace HalterExercise.Models
     public class Cow
     {
         [Key]
+        [Column("id")]
         public Guid Id { get; set; }
         [Column("collarid")]
         public int CollarId { get; set; }
-        [Column("cownumber")]
+        [Column("cowNumber")]
         public int CowNumber { get; set; }
         [NotMapped]
         public int Latitude { get; set; }
