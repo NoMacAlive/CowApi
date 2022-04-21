@@ -29,8 +29,7 @@ namespace HalterExercise
                 .AddRefitClient<ICowAPI>()
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration["HalterCowApiAddress"]));
             services.AddDbContext<HalterContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("HalterContext"))
-                    .UseSnakeCaseNamingConvention(  ));
+                options.UseNpgsql(Configuration.GetConnectionString("HalterContext")));
 
             services.AddScoped<ICowRepository, CowRepository>( );
             services.AddScoped<ICollarRepository, CollarRepository>( );

@@ -38,6 +38,7 @@ namespace HalterExercise.Controllers
 				Id = cow.Id,
 				CollarId = cow.CollarId,
 				CowNumber = cow.CowNumber,
+				CollarStatus = collarStatus.Healthy?Enums.CollarStatus.Healthy:Enums.CollarStatus.Broken,
 				LastLocation = new Location( )
 				{
 					Latitude = cow.Latitude,
@@ -62,6 +63,7 @@ namespace HalterExercise.Controllers
 					Id = cow.Id,
 					CollarId = cow.CollarId,
 					CowNumber = cow.CowNumber,
+					CollarStatus = collarStatus.Healthy?Enums.CollarStatus.Healthy:Enums.CollarStatus.Broken,
 					LastLocation = new Location( )
 					{
 						Latitude = cow.Latitude,
@@ -75,15 +77,19 @@ namespace HalterExercise.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult Post( CreateNewCowRequest request )
+		public async Task<ActionResult> Post( CreateNewCowRequest request )
 		{
-			_cowRepository.Create( new Cow( )
+			if ( Int32.Parse(request.CollarId) > 50 || Int32.Parse(request.CollarId) <= 0)
+			{
+				return BadRequest( "Collar Id have to be in the range of 1-50" );
+			}
+			bool success = await _cowRepository.Create( new Cow( )
 			{
 				CollarId = Int32.Parse( request.CollarId ),
 				CowNumber = Int32.Parse( request.CowNumber )
 			} );
 
-			return Ok( );
+			return success?( ActionResult )Ok( ):BadRequest( "Something went wrong and the cow was not created" );
 		}
 
 		[HttpPut( "{id}" )]

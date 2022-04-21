@@ -23,9 +23,9 @@ namespace HalterExercise.Repositories
 
 		public async Task<bool> Create( Cow newObject )
 		{
-			_dbContext.Cows.Add( newObject );
+			var entityEntry = _dbContext.Cows.Add( newObject );
 			await _dbContext.SaveChangesAsync( );
-			return true;
+			return entityEntry is null ? false : true;
 		}
 
 		public async Task<bool> Update( Cow updatedObject )

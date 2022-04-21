@@ -7,10 +7,9 @@ namespace HalterExercise.Models
     [Table("cows")]
     public class Cow
     {
-        [Key]
-        [Column("id")]
+        [Key, Column("id")]
         public Guid Id { get; set; }
-        [Column("collarid")]
+        [Column("collarId")]
         public int CollarId { get; set; }
         [Column("cowNumber")]
         public int CowNumber { get; set; }
