@@ -18,7 +18,6 @@ namespace HalterExercise.Controllers
 		private readonly ICowAPI _cowApi;
 		private readonly ICowRepository _cowRepository;
 		private readonly ILogger<CowsController> _logger;
-		private List<Cow> cows = new List<Cow>( );
 
 		public CowsController( ICowAPI cowApi,ICowRepository cowRepository,
 			ILogger<CowsController> logger )
