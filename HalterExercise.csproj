@@ -21,5 +21,31 @@
     <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="HalterExercise.Test\obj\HalterExercise.Test.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="HalterExercise.Test\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="HalterExercise.Test\obj\project.packagespec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="HalterExercise.Test\obj\**" />
+    <Compile Remove="HalterExercise.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="HalterExercise.Test\obj\**" />
+    <EmbeddedResource Remove="HalterExercise.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="HalterExercise.Test\obj\**" />
+    <None Remove="HalterExercise.Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="HalterExercise.Test\obj\**" />
+    <Content Remove="HalterExercise.Test\**" />
+  </ItemGroup>
+
 
 </Project>
