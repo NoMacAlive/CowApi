@@ -1,9 +1,11 @@
 using System;
+using System.Net.Mime;
 using HalterExercise.Controllers;
 using HalterExercise.Repositories;
 using HalterExercise.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,6 +50,18 @@ namespace HalterExercise
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler( options => options.Run(
+                    async context =>
+                    {
+                        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+                        context.Response.ContentType = MediaTypeNames.Text.Plain;
+
+                        await context.Response.WriteAsync("Something went wrong, please try again later or try with different data.");
+                    }
+                ) );
             }
 
             app.UseHttpsRedirection();
