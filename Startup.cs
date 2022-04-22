@@ -28,8 +28,14 @@ namespace HalterExercise
             services
                 .AddRefitClient<ICowAPI>()
                 .ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration["HalterCowApiAddress"]));
+            //configure postgresql
             services.AddDbContext<HalterContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("HalterContext")));
+            //configure redis cache
+            services.AddStackExchangeRedisCache( options =>
+            {
+                options.Configuration = Configuration.GetConnectionString( "Redis" );
+            } );
 
             services.AddScoped<ICowRepository, CowRepository>( );
             services.AddScoped<ICollarRepository, CollarRepository>( );

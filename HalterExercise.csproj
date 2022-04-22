@@ -14,6 +14,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.4" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
     <PackageReference Include="Npgsql" Version="5.0.10" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
@@ -30,6 +31,7 @@
   <ItemGroup>
     <Compile Remove="HalterExercise.Test\obj\**" />
     <Compile Remove="HalterExercise.Test\**" />
+    <Compile Remove="RedisCachingPolicy.cs" />
   </ItemGroup>
 
   <ItemGroup>
