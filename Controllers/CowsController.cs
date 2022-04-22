@@ -6,6 +6,7 @@ using HalterExercise.Models.RequestModels;
 using HalterExercise.Repositories;
 using HalterExercise.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 
 namespace HalterExercise.Controllers
@@ -16,12 +17,14 @@ namespace HalterExercise.Controllers
 	{
 		private readonly ICowRepository _cowRepository;
 		private readonly ICollarStatusService _collarStatusService;
+		private readonly IDistributedCache _distributedCache;
 		private readonly ILogger<CowsController> _logger;
 
-		public CowsController( ICowRepository cowRepository, ICollarStatusService collarStatusService, ILogger<CowsController> logger )
+		public CowsController( ICowRepository cowRepository, ICollarStatusService collarStatusService, IDistributedCache distributedCache, ILogger<CowsController> logger )
 		{
 			_cowRepository = cowRepository;
 			_collarStatusService = collarStatusService;
+			_distributedCache = distributedCache;
 			_logger = logger;
 		}
 
