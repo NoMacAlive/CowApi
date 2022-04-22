@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 using HalterExercise.Models;
 using HalterExercise.Models.RequestModels;
@@ -8,6 +9,7 @@ using HalterExercise.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace HalterExercise.Controllers
 {
@@ -54,28 +56,48 @@ namespace HalterExercise.Controllers
 		[HttpGet]
 		public async Task<IList<GetCowsResponse>> Get( )
 		{
-			IList<Cow> cows = await _cowRepository.GetAllCows( );
 			List<GetCowsResponse> responses = new List<GetCowsResponse>( );
-			foreach ( var cow in cows )
-			{
-				CollarStatus collarStatus = await _collarStatusService.GetLatestCollarStatus( cow.CollarId );
-				cow.Latitude = ( int )Math.Round( Decimal.Parse( collarStatus.Lat ) );
-				cow.Longitude = ( int )Math.Round( Decimal.Parse( collarStatus.Lng ) );
-				GetCowsResponse response = new GetCowsResponse( )
-				{
-					Id = cow.Id,
-					CollarId = cow.CollarId,
-					CowNumber = cow.CowNumber,
-					CollarStatus = collarStatus.Healthy?Enums.CollarStatus.Healthy:Enums.CollarStatus.Broken,
-					LastLocation = new Location( )
-					{
-						Latitude = cow.Latitude,
-						Longitude = cow.Longitude
-					}
-				};
-				responses.Add( response );
-			}
+			var cacheKey = "cows";
+			string serializedCowsList;
+			var cowsResponsesList = new List<GetCowsResponse>();
+			var redisCowResponsesList = await _distributedCache.GetAsync(cacheKey);
 
+			if ( redisCowResponsesList != null )
+			{
+				serializedCowsList = Encoding.UTF8.GetString(redisCowResponsesList);
+				responses = JsonConvert.DeserializeObject<List<GetCowsResponse>>(serializedCowsList);
+			}
+			else
+			{
+				IList<Cow> cows = await _cowRepository.GetAllCows( );
+				foreach ( var cow in cows )
+				{
+					CollarStatus collarStatus = await _collarStatusService.GetLatestCollarStatus( cow.CollarId );
+					cow.Latitude = ( int )Math.Round( Decimal.Parse( collarStatus.Lat ) );
+					cow.Longitude = ( int )Math.Round( Decimal.Parse( collarStatus.Lng ) );
+					GetCowsResponse response = new GetCowsResponse( )
+					{
+						Id = cow.Id,
+						CollarId = cow.CollarId,
+						CowNumber = cow.CowNumber,
+						CollarStatus = collarStatus.Healthy?Enums.CollarStatus.Healthy:Enums.CollarStatus.Broken,
+						LastLocation = new Location( )
+						{
+							Latitude = cow.Latitude,
+							Longitude = cow.Longitude
+						}
+					};
+					responses.Add( response );
+				}
+				//cache in redis
+				serializedCowsList = JsonConvert.SerializeObject( responses );
+				redisCowResponsesList = Encoding.UTF8.GetBytes( serializedCowsList );
+				var options = new DistributedCacheEntryOptions( )
+					.SetAbsoluteExpiration( DateTime.Now.AddMinutes( 10 ) )
+					.SetSlidingExpiration( TimeSpan.FromMinutes( 2 ) );
+				await _distributedCache.SetAsync( cacheKey, redisCowResponsesList, options );
+			}
+			
 			return responses;
 		}
 
