@@ -40,7 +40,6 @@ namespace HalterExercise
             } );
 
             services.AddScoped<ICowRepository, CowRepository>( );
-            services.AddScoped<ICollarRepository, CollarRepository>( );
             services.AddScoped<ICollarStatusService, CollarStatusService>( );
         }
 
