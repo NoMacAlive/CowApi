@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using HalterExercise.Models;
+using CowApi.Models;
 
-namespace HalterExercise.Services
+namespace CowApi.Services
 {
 	public interface ICollarStatusService
 	{

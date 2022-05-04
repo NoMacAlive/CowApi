@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HalterExercise.Controllers;
-using HalterExercise.Models;
+using CowApi.Controllers;
+using CowApi.Models;
 
-namespace HalterExercise.Services
+namespace CowApi.Services
 {
 	public class CollarStatusService : ICollarStatusService
 	{

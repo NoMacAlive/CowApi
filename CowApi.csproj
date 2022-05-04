@@ -31,22 +31,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="CowApi.Test\**" />
     <Compile Remove="HalterExercise.Test\obj\**" />
     <Compile Remove="HalterExercise.Test\**" />
     <Compile Remove="RedisCachingPolicy.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="CowApi.Test\**" />
     <EmbeddedResource Remove="HalterExercise.Test\obj\**" />
     <EmbeddedResource Remove="HalterExercise.Test\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="CowApi.Test\**" />
     <None Remove="HalterExercise.Test\obj\**" />
     <None Remove="HalterExercise.Test\**" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="CowApi.Test\**" />
     <Content Remove="HalterExercise.Test\obj\**" />
     <Content Remove="HalterExercise.Test\**" />
   </ItemGroup>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace HalterExercise.Enums
+namespace CowApi.Enums
 {
     [JsonConverter(typeof( JsonStringEnumConverter ))]
     public enum CollarStatus

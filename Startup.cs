@@ -1,8 +1,8 @@
 using System;
 using System.Net.Mime;
-using HalterExercise.Controllers;
-using HalterExercise.Repositories;
-using HalterExercise.Services;
+using CowApi.Controllers;
+using CowApi.Repositories;
+using CowApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Refit;
 
-namespace HalterExercise
+namespace CowApi
 {
     public class Startup
     {
@@ -29,10 +29,10 @@ namespace HalterExercise
             services.AddControllers();
             services
                 .AddRefitClient<ICowAPI>()
-                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration["HalterCowApiAddress"]));
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(Configuration["CowApiAddress"]));
             //configure postgresql
-            services.AddDbContext<HalterContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("HalterContext")));
+            services.AddDbContext<CowContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("CowContext")));
             //configure redis cache
             services.AddStackExchangeRedisCache( options =>
             {

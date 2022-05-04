@@ -22,7 +22,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\HalterExercise.csproj" />
+		<ProjectReference Include="..\CowApi.csproj" />
 	</ItemGroup>
 
 </Project>

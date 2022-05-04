@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CowApi", "CowApi.csproj", "{A5FB2EC1-1DB6-4934-B871-5C6EB814794C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CowApi.Test", "CowApi.Test\CowApi.Test.csproj", "{E9F00562-05B2-48FC-AC27-E6EA5FA6EA4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5FB2EC1-1DB6-4934-B871-5C6EB814794C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5FB2EC1-1DB6-4934-B871-5C6EB814794C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5FB2EC1-1DB6-4934-B871-5C6EB814794C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5FB2EC1-1DB6-4934-B871-5C6EB814794C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9F00562-05B2-48FC-AC27-E6EA5FA6EA4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9F00562-05B2-48FC-AC27-E6EA5FA6EA4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9F00562-05B2-48FC-AC27-E6EA5FA6EA4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9F00562-05B2-48FC-AC27-E6EA5FA6EA4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD8BA9C9-8A80-4DAF-975C-6D1AF48B5B16}
+	EndGlobalSection
+EndGlobal

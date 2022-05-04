@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using HalterExercise.Controllers;
-using HalterExercise.Models;
-using HalterExercise.Services;
+using CowApi.Controllers;
+using CowApi.Models;
+using CowApi.Services;
 using Moq;
 using Xunit;
 

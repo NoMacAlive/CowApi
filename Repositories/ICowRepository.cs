@@ -1,9 +1,9 @@
 using System;
-using HalterExercise.Models;
+using CowApi.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace HalterExercise.Repositories
+namespace CowApi.Repositories
 {
 	public interface ICowRepository : IRepository<Cow>
 	{

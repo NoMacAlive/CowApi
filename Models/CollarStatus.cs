@@ -1,7 +1,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace HalterExercise.Models
+namespace CowApi.Models
 {
 	public class CollarStatus
 	{

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HalterExercise.Models
+namespace CowApi.Models
 {
     [Table("cows")]
     public class Cow

@@ -1,13 +1,13 @@
-using HalterExercise.Models;
+using CowApi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HalterExercise
+namespace CowApi
 {
-	public class HalterContext : DbContext
+	public class CowContext : DbContext
 	{
 		public DbSet<Cow> Cows { get; set; }
 
-		public HalterContext (DbContextOptions<HalterContext> options)
+		public CowContext (DbContextOptions<CowContext> options)
 			: base(options)
 		{
 		}

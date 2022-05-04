@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace HalterExercise.Models.RequestModels
+namespace CowApi.Models.RequestModels
 {
 	public class UpdateCowRequest
 	{

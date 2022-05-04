@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace HalterExercise.Repositories
+namespace CowApi.Repositories
 {
 	public interface IRepository<T>
 	{

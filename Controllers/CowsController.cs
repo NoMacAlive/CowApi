@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using HalterExercise.Models;
-using HalterExercise.Models.RequestModels;
-using HalterExercise.Repositories;
-using HalterExercise.Services;
+using CowApi.Models;
+using CowApi.Models.RequestModels;
+using CowApi.Repositories;
+using CowApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace HalterExercise.Controllers
+namespace CowApi.Controllers
 {
 	[ApiController]
 	[Route( "[controller]" )]

@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using HalterExercise.Models;
+using CowApi.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HalterExercise.Repositories
+namespace CowApi.Repositories
 {
 	public class CowRepository : ICowRepository
 	{
-		private readonly HalterContext _dbContext;
+		private readonly CowContext _dbContext;
 
-		public CowRepository( HalterContext dbContext )
+		public CowRepository( CowContext dbContext )
 		{
 			_dbContext = dbContext;
 		}
