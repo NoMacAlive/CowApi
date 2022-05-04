@@ -1,20 +1,74 @@
 # CowBackEndApi by Guangya Zhu
 
-This is a exercise for Halter recruitment process.
+This is a backend api exercise using .net core 3.1, postgres, redis and docker.
+The backend api will listen to localhost:8000 by default.
+
+This project is about making a back end to integrate with a external smart collar api to monitor the status of cows.
+It contains three endpoints, GET, POST and PUT
+
+##Expected Responses
+GET /cows
+returns:
+[
+{
+"id": "fe0a1ec1-e7d4-4b2d-a555-ae23926ee9d0",
+"collarId": "261",
+"cowNumber": "88261",
+"collarStatus": "Healthy",
+"lastLocation": {
+"lat": 123,
+"long": 456
+}
+},
+{
+"id": "fe0a1ec1-e7d4-4b2d-a555-ae23926ee9d0",
+"collarId": "222",
+"cowNumber": "88222",
+"collarStatus": "Broken",
+"lastLocation": {
+"lat": 123,
+"long": 456
+}
+}
+]
+POST /cows
+body:
+{
+"collarId": "261",
+"cowNumber": "88261",
+}
+returns:
+{
+"id": "fe0a1ec1-e7d4-4b2d-a555-ae23926ee9d0",
+"collarId": "261",
+"cowNumber": "88261",
+"collarStatus": "Healthy" (or "Broken"),
+"lastLocation": {
+"lat": 123,
+"long": 456
+}
+}
+PUT /cows/:id
+body:
+{
+"collarId": "261",
+"cowNumber": "88261",
+}
+returns:
+{
+"id": "fe0a1ec1-e7d4-4b2d-a555-ae23926ee9d0",
+"collarId": "261",
+"cowNumber": "88261",
+"collarStatus": "Broken" (or Healthy),
+"lastLocation": {
+"lat": 123,
+"long": 456
+}
+}
 
 ## Usage
-You would notice that the redis postgresql server is hosted in the docker container.\
-Run
+Run the following command in the root directory
 ```bash
 docker-compose up --build
-```
-beside the docker-compose.yml file to set up the database envrionment and run this before you use the app.\
-
-Set the environment variable of your computer "ASPNETCORE_ENVIRONMENT" to "Production" to hide the debugging messages.\
-Make sure Microsoft.NETCore.App 5.0.15 is installed on the machine to run the app.
-```bash
-Double clicking the "./HalterExercise/HalterExercise.exe" will start the backend.
-I guess you will not be using a real front end for testing so I didn't enable CORS.
-The localhost port used was 5001
 ```
 
